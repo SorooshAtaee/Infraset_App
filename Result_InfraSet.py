@@ -1,61 +1,75 @@
-﻿from ghpythonlib.componentbase import executingcomponent as component
+from ghpythonlib.componentbase import executingcomponent as component
 import csv
 import os
-import codecs  # Import the codecs module for encoding compatibility
+import codecs
+import ast
 
 class MyComponent(component):
-    
-    def RunScript(self, input_data, file_path, file_name):
-        """Processes input data containing multiple key-value pairs and writes them to a CSV file.
-        
-        Inputs:
-            input_data: The input text containing data to be processed.
-            file_path: The path to save the CSV file.
-            file_name: The name of the CSV file to save.
-            
-        Output:
-            a: A success message indicating where the CSV was saved or an error message if there was a problem.
-        """
-        
-        __author__ = "AdminTMP"
-        __version__ = "2024.12.05"
 
-        # Step 1: Process the input data to extract key-value pairs
-        lines = input_data.strip().splitlines()
+    def RunScript(self, input_data, file_path, file_name):
+
+        if not input_data:
+            return "No input data provided."
+
         data = []
 
-        # Skip lines starting with '{' and any empty lines
-        for line in lines:
-            if line.strip().startswith("{") or not line.strip():
+        # INPUT IS A LIST OF STRINGS (Grasshopper Panel)
+        for line in input_data:
+            if line is None:
                 continue
 
-            # Try to extract key-value pairs from each line
+            line = str(line).strip()
+
+            # Skip GH path lines
+            if not line:
+                continue
+            if line.startswith("{") and line.endswith("}"):
+                continue
+
+            # Extract tuple
+            start = line.find("(")
+            end = line.rfind(")")
+
+            if start == -1 or end == -1:
+                continue
+
+            tuple_text = line[start:end + 1]
+
             try:
-                # Split on the first occurrence of a number followed by '. ' (e.g., '1. ')
-                line = line.split(". ", 1)[-1]
-                key_value = eval(line)  # Safely evaluate the tuple
+                key_value = ast.literal_eval(tuple_text)
+            except:
+                continue
 
-                # Ensure the key is a string and convert the value to string if needed
-                if isinstance(key_value, tuple) and len(key_value) == 2:
-                    key, value = key_value
-                    if isinstance(key, str) and not isinstance(value, str):
-                        value = str(value)  # Convert non-string values to strings
-                    data.append([key, value])
-                else:
-                    raise ValueError("Invalid format for key-value pair")
-            except (SyntaxError, ValueError) as e:
-                return "An error occurred while processing line '{}': {}".format(line, str(e))
+            if isinstance(key_value, tuple) and len(key_value) == 2:
+                key = key_value[0]
+                value = key_value[1]
 
-        # Step 2: Write data to a CSV file
-        output_path = os.path.join(file_path, "{}.csv".format(file_name))  # Cross-platform path construction
+                if value is None:
+                    value = "N/A"
+
+                data.append([str(key), str(value)])
+
+        if not data:
+            return "No valid key-value pairs found."
+
+        # Create folder if needed
+        if not os.path.exists(file_path):
+            try:
+                os.makedirs(file_path)
+            except:
+                return "Could not create directory: " + file_path
+
+        output_path = os.path.join(file_path, file_name + ".csv")
 
         try:
-            # Use codecs to open the file with encoding for Python 2.x compatibility
-            with codecs.open(output_path, mode="w", encoding='utf-8') as file:
-                writer = csv.writer(file)
-                writer.writerow(["Key", "Value"])  # Write header row
-                writer.writerows(data)  # Write data rows
+            with codecs.open(output_path, "w", "utf-8") as f:
+                writer = csv.writer(f, lineterminator="\n")
+                writer.writerow(["Parameter", "Value"])
 
-            return "CSV file saved successfully at: {}".format(output_path)
+                for row in data:
+                    writer.writerow(row)
+
+            return "CSV saved with " + str(len(data)) + " rows at: " + output_path
+
         except Exception as e:
-            return "An error occurred while saving the CSV file: {}".format(str(e))
+            return "CSV write error: " + str(e)
