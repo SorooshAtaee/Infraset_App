@@ -2367,8 +2367,8 @@ class AssemblyDatabase:
 
             maintenance_mass = rep_factor_pavement * pavement_mass
             maintenance_ghg_val = rep_factor_pavement * pavement_mass * emb_ghg_coeff * 1000
-            maintenance_energy_val = rep_factor_pavement * pavement_mass * emb_energy_coeff
-            maintenance_water_val = rep_factor_pavement * pavement_mass * emb_water_coeff
+            maintenance_energy_val = rep_factor_pavement * pavement_mass * emb_energy_coeff * 1000
+            maintenance_water_val = rep_factor_pavement * pavement_mass * emb_water_coeff * 1000
 
             pavement_category = next((mat["Categories"] for mat in MATERIAL_DATA if mat["Material"] == pavement_material), None)
             if pavement_category:
