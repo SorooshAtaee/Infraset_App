@@ -1,5 +1,5 @@
-﻿from ghpythonlib.componentbase import executingcomponent as component
-from Backend_InfraSet import MaterialDatabase, AssemblyDatabase, ElementDatabase
+from ghpythonlib.componentbase import executingcomponent as component
+from Infraset238 import MaterialDatabase, AssemblyDatabase, ElementDatabase
 import rhinoscriptsyntax as rs
 import Rhino.Geometry as rg
 import System
@@ -200,14 +200,14 @@ class InfrasetAssembly(component):
             operational_water_coefficient = assembly_data.get('Operational_Water_(L/No)', 0) * (1 - water_reduction_factor / 100)
             
                                 # Embodied calculations GHG for material categories
-            Concrete_plaster_products_Initial_Embodied_GHG = assembly_data.get("Concrete and plaster products_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Plastics_Initial_Embodied_GHG = assembly_data.get("Plastics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Metals_Initial_Embodied_GHG = assembly_data.get("Metals_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Miscellaneous_Initial_Embodied_GHG = assembly_data.get("Miscellaneous_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Sand_stone_ceramics_Initial_Embodied_GHG = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Glass_Initial_Embodied_GHG = assembly_data.get("Glass_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Timber_Initial_Embodied_GHG = assembly_data.get("Timber_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
-            Insulation_Initial_Embodied_GHG = assembly_data.get("Insulation_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
+            Concrete_plaster_products_Initial_Embodied_GHG = assembly_data.get("Concrete and plaster products_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Plastics_Initial_Embodied_GHG = assembly_data.get("Plastics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Metals_Initial_Embodied_GHG = assembly_data.get("Metals_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Miscellaneous_Initial_Embodied_GHG = assembly_data.get("Miscellaneous_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Sand_stone_ceramics_Initial_Embodied_GHG = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Glass_Initial_Embodied_GHG = assembly_data.get("Glass_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Timber_Initial_Embodied_GHG = assembly_data.get("Timber_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
+            Insulation_Initial_Embodied_GHG = assembly_data.get("Insulation_Initial_Embodied_GHG_(kgCO2e)", 0) * No * volume
                     
                     # Maintenance Embodied GHG calculations for material categories
             Concrete_plaster_products_Maintenance_Embodied_GHG = assembly_data.get("Concrete and plaster products_Maintenance_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
@@ -220,14 +220,14 @@ class InfrasetAssembly(component):
             Insulation_Maintenance_Embodied_GHG = assembly_data.get("Insulation_Maintenance_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)* volume
                     
                     # Embodied calculations Energy for material categories
-            Concrete_plaster_products_Initial_Embodied_energy = assembly_data.get("Concrete and plaster products_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Plastics_Initial_Embodied_energy = assembly_data.get("Plastics_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Metals_Initial_Embodied_energy = assembly_data.get("Metals_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Miscellaneous_Initial_Embodied_energy = assembly_data.get("Miscellaneous_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Sand_stone_ceramics_Initial_Embodied_energy = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Glass_Initial_Embodied_energy = assembly_data.get("Glass_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Timber_Initial_Embodied_energy = assembly_data.get("Timber_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
-            Insulation_Initial_Embodied_energy = assembly_data.get("Insulation_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
+            Concrete_plaster_products_Initial_Embodied_energy = assembly_data.get("Concrete and plaster products_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Plastics_Initial_Embodied_energy = assembly_data.get("Plastics_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Metals_Initial_Embodied_energy = assembly_data.get("Metals_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Miscellaneous_Initial_Embodied_energy = assembly_data.get("Miscellaneous_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Sand_stone_ceramics_Initial_Embodied_energy = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Glass_Initial_Embodied_energy = assembly_data.get("Glass_Initial_Embodied_energy_(MJ)", 0) * No *  volume
+            Timber_Initial_Embodied_energy = assembly_data.get("Timber_Initial_Embodied_energy_(MJ)", 0) * No * volume
+            Insulation_Initial_Embodied_energy = assembly_data.get("Insulation_Initial_Embodied_energy_(MJ)", 0) * No *  volume
                     
                     # Maintenance Embodied Energy calculations for material categories
             Concrete_plaster_products_Maintenance_Embodied_energy = assembly_data.get("Concrete and plaster products_Maintenance_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
@@ -240,14 +240,14 @@ class InfrasetAssembly(component):
             Insulation_Maintenance_Embodied_energy = assembly_data.get("Insulation_Maintenance_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)* volume
                     
                     # Embodied calculations water for material categories
-            Concrete_plaster_products_Initial_Embodied_water = assembly_data.get("Concrete and plaster products_Initial_embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Plastics_Initial_Embodied_water = assembly_data.get("Plastics_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Metals_Initial_Embodied_water = assembly_data.get("Metals_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Miscellaneous_Initial_Embodied_water = assembly_data.get("Miscellaneous_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Sand_stone_ceramics_Initial_Embodied_water = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Glass_Initial_Embodied_water = assembly_data.get("Glass_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Timber_Initial_Embodied_water = assembly_data.get("Timber_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
-            Insulation_Initial_Embodied_water = assembly_data.get("Insulation_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)* volume
+            Concrete_plaster_products_Initial_Embodied_water = assembly_data.get("Concrete and plaster products_Initial_embodied_water_(L)", 0) * No * volume
+            Plastics_Initial_Embodied_water = assembly_data.get("Plastics_Initial_Embodied_water_(L)", 0) * No * volume
+            Metals_Initial_Embodied_water = assembly_data.get("Metals_Initial_Embodied_water_(L)", 0) * No * volume
+            Miscellaneous_Initial_Embodied_water = assembly_data.get("Miscellaneous_Initial_Embodied_water_(L)", 0) * No * volume
+            Sand_stone_ceramics_Initial_Embodied_water = assembly_data.get("Sand, stone and ceramics_Initial_Embodied_water_(L)", 0) * No * volume
+            Glass_Initial_Embodied_water = assembly_data.get("Glass_Initial_Embodied_water_(L)", 0) * No * volume
+            Timber_Initial_Embodied_water = assembly_data.get("Timber_Initial_Embodied_water_(L)", 0) * No * volume
+            Insulation_Initial_Embodied_water = assembly_data.get("Insulation_Initial_Embodied_water_(L)", 0) * No * volume
                     
                     # Maintenance Embodied water calculations for material categories
             Concrete_plaster_products_Maintenance_Embodied_water = assembly_data.get("Concrete and plaster products_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)* volume
