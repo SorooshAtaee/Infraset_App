@@ -770,7 +770,7 @@ class ElementDatabase(object):
         # ───────────────────────────────────────
         "Bollard_Vol": {
             "layers": [
-                {"material": "Steel_Hot_Rolled", "thickness_m": 0.10},
+                {"material": "Hot_rolled_structural_steel", "thickness_m": 0.10},
                 {"material": "Painting", "thickness_m": 0.0008}
             ],
             "replacement_factor": 1,  # DL = 15 years
@@ -1831,14 +1831,14 @@ class ElementDatabase(object):
                 "Insulation_Initial_Embodied_energy_(MJ)": category_energy["Insulation"],
                 # ... (add all other categories similarly)
                 # Category breakdowns - Maintenance Energy
-                "Concrete and plaster products_Maintenance_Embodied_energy_(MJ)": category_energy["Concrete and plaster products"],
-                "Plastics_Maintenance_Embodied_energy_(MJ)": category_energy["Plastics"],
-                "Metals_Maintenance_Embodied_energy_(MJ)": category_energy["Metals"],
-                "Miscellaneous_Maintenance_Embodied_energy_(MJ)": category_energy["Miscellaneous"],
-                "Sand, stone and ceramics_Maintenance_Embodied_energy_(MJ)": category_energy["Sand, stone and ceramics"],
-                "Glass_Maintenance_Embodied_energy_(MJ)": category_energy["Glass"],
-                "Timber_Maintenance_Embodied_energy_(MJ)": category_energy["Timber"],
-                "Insulation_Maintenance_Embodied_energy_(MJ)": category_energy["Insulation"],
+                "Concrete and plaster products_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Concrete and plaster products"],
+                "Plastics_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Plastics"],
+                "Metals_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Metals"],
+                "Miscellaneous_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Miscellaneous"],
+                "Sand, stone and ceramics_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Sand, stone and ceramics"],
+                "Glass_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Glass"],
+                "Timber_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Timber"],
+                "Insulation_Maintenance_Embodied_energy_(MJ)": maintenance_energy["Insulation"],
                 # Category breakdowns - Initial Water
                 "Concrete and plaster products_Initial_embodied_water_(L)": category_water["Concrete and plaster products"],
                 "Plastics_Initial_Embodied_water_(L)": category_water["Plastics"],
