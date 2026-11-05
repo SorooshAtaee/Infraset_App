@@ -2,12 +2,11 @@ from ghpythonlib.componentbase import executingcomponent as component
 from Infraset238 import MaterialDatabase, ElementDatabase
 from Grasshopper.Kernel import GH_RuntimeMessageLevel as RML
 from Grasshopper import DataTree
-from Grasshopper.Kernel.Data import GH_Path  # Added missing import
+from Grasshopper.Kernel.Data import GH_Path
 from Grasshopper.Kernel import GH_Document
 from Grasshopper.Kernel.Special import GH_ValueList, GH_ValueListItem
 import System
 from System.Drawing import PointF
-
 
 class InfrasetElement(component):
     def RunScript(self, connect_button, element_category, No, element_data_list, null1, wastage_coefficient, material_service_life, null2, energy_reduction_factor, water_reduction_factor, ghg_reduction_factor):
@@ -32,56 +31,66 @@ class InfrasetElement(component):
         timber_mass = 0.0
         glass_mass = 0.0
         insulation_mass = 0.0
-        # Embodied calculations GHG for material categories
-        Concrete_plaster_products_Initial_Embodied_GHG= 0.0
-        Plastics_Initial_Embodied_GHG= 0.0
-        Metals_Initial_Embodied_GHG= 0.0
-        Miscellaneous_Initial_Embodied_GHG =0
-        Sand_stone_ceramics_Initial_Embodied_GHG= 0.0
-        Timber_Initial_Embodied_GHG= 0.0
-        Insulation_Initial_Embodied_GHG=0.0
-        # Maintenance Embodied GHG calculations for material categories
-        Concrete_plaster_products_Maintenance_Embodied_GHG= 0.0
-        Plastics_Maintenance_Embodied_GHG= 0.0
-        Metals_Maintenance_Embodied_GHG= 0.0
-        Miscellaneous_Maintenance_Embodied_GHG =0
-        Sand_stone_ceramics_Maintenance_Embodied_GHG= 0.0
-        Timber_Maintenance_Embodied_GHG= 0.0
-        Insulation_Maintenance_Embodied_GHG=0.0
-        # Embodied calculations energy for material categories
-        Concrete_plaster_products_Initial_Embodied_energy= 0.0
-        Plastics_Initial_Embodied_energy= 0.0
-        Metals_Initial_Embodied_energy= 0.0
-        Miscellaneous_Initial_Embodied_energy =0
-        Sand_stone_ceramics_Initial_Embodied_energy= 0.0
-        Timber_Initial_Embodied_energy= 0.0
-        Insulation_Initial_Embodied_energy=0.0
-        # Maintenance Embodied energy calculations for material categories
-        Concrete_plaster_products_Maintenance_Embodied_energy= 0.0
-        Plastics_Maintenance_Embodied_energy= 0.0
-        Metals_Maintenance_Embodied_energy= 0.0
-        Miscellaneous_Maintenance_Embodied_energy =0
-        Sand_stone_ceramics_Maintenance_Embodied_energy= 0.0
-        Timber_Maintenance_Embodied_energy= 0.0
-        Insulation_Maintenance_Embodied_energy=0.0
-                # Embodied calculations water for material categories
-        Concrete_plaster_products_Initial_Embodied_water= 0.0
-        Plastics_Initial_Embodied_water= 0.0
-        Metals_Initial_Embodied_water= 0.0
-        Miscellaneous_Initial_Embodied_water =0
-        Sand_stone_ceramics_Initial_Embodied_water= 0.0
-        Timber_Initial_Embodied_water= 0.0
-        Insulation_Initial_Embodied_water=0.0
-        # Maintenance Embodied energy calculations for material categories
-        Concrete_plaster_products_Maintenance_Embodied_water= 0.0
-        Plastics_Maintenance_Embodied_water= 0.0
-        Metals_Maintenance_Embodied_water= 0.0
-        Miscellaneous_Maintenance_Embodied_water =0
-        Sand_stone_ceramics_Maintenance_Embodied_water= 0.0
-        Timber_Maintenance_Embodied_water= 0.0
-        Insulation_Maintenance_Embodied_water=0.0
         
-
+        # Embodied calculations GHG for material categories
+        Concrete_plaster_products_Initial_Embodied_GHG = 0.0
+        Plastics_Initial_Embodied_GHG = 0.0
+        Metals_Initial_Embodied_GHG = 0.0
+        Miscellaneous_Initial_Embodied_GHG = 0.0
+        Sand_stone_ceramics_Initial_Embodied_GHG = 0.0
+        Timber_Initial_Embodied_GHG = 0.0
+        Insulation_Initial_Embodied_GHG = 0.0
+        Glass_Initial_Embodied_GHG = 0.0
+        
+        # Maintenance Embodied GHG calculations for material categories
+        Concrete_plaster_products_Maintenance_Embodied_GHG = 0.0
+        Plastics_Maintenance_Embodied_GHG = 0.0
+        Metals_Maintenance_Embodied_GHG = 0.0
+        Miscellaneous_Maintenance_Embodied_GHG = 0.0
+        Sand_stone_ceramics_Maintenance_Embodied_GHG = 0.0
+        Timber_Maintenance_Embodied_GHG = 0.0
+        Insulation_Maintenance_Embodied_GHG = 0.0
+        Glass_Maintenance_Embodied_GHG = 0.0
+        
+        # Embodied calculations energy for material categories
+        Concrete_plaster_products_Initial_Embodied_energy = 0.0
+        Plastics_Initial_Embodied_energy = 0.0
+        Metals_Initial_Embodied_energy = 0.0
+        Miscellaneous_Initial_Embodied_energy = 0.0
+        Sand_stone_ceramics_Initial_Embodied_energy = 0.0
+        Timber_Initial_Embodied_energy = 0.0
+        Insulation_Initial_Embodied_energy = 0.0
+        Glass_Initial_Embodied_energy = 0.0
+        
+        # Maintenance Embodied energy calculations for material categories
+        Concrete_plaster_products_Maintenance_Embodied_energy = 0.0
+        Plastics_Maintenance_Embodied_energy = 0.0
+        Metals_Maintenance_Embodied_energy = 0.0
+        Miscellaneous_Maintenance_Embodied_energy = 0.0
+        Sand_stone_ceramics_Maintenance_Embodied_energy = 0.0
+        Timber_Maintenance_Embodied_energy = 0.0
+        Insulation_Maintenance_Embodied_energy = 0.0
+        Glass_Maintenance_Embodied_energy = 0.0
+        
+        # Embodied calculations water for material categories
+        Concrete_plaster_products_Initial_Embodied_water = 0.0
+        Plastics_Initial_Embodied_water = 0.0
+        Metals_Initial_Embodied_water = 0.0
+        Miscellaneous_Initial_Embodied_water = 0.0
+        Sand_stone_ceramics_Initial_Embodied_water = 0.0
+        Timber_Initial_Embodied_water = 0.0
+        Insulation_Initial_Embodied_water = 0.0
+        Glass_Initial_Embodied_water = 0.0
+        
+        # Maintenance Embodied water calculations for material categories
+        Concrete_plaster_products_Maintenance_Embodied_water = 0.0
+        Plastics_Maintenance_Embodied_water = 0.0
+        Metals_Maintenance_Embodied_water = 0.0
+        Miscellaneous_Maintenance_Embodied_water = 0.0
+        Sand_stone_ceramics_Maintenance_Embodied_water = 0.0
+        Timber_Maintenance_Embodied_water = 0.0
+        Insulation_Maintenance_Embodied_water = 0.0
+        Glass_Maintenance_Embodied_water = 0.0
 
         # Initialize databases
         material_db = MaterialDatabase()
@@ -96,31 +105,21 @@ class InfrasetElement(component):
         # Create value list when button is pressed
         if connect_button and self.Params.Input[1].SourceCount == 0:
             try:
-                # Filter element categories to only include allowed infrastructure elements
                 element_categories = [cat for cat in element_db.element_db.keys()]
-                
-                # Create value list component
                 vl = GH_ValueList()
                 vl.CreateAttributes()
-                
-                # Populate with filtered categories using legacy string formatting
                 for cat in element_categories:
-                    item = GH_ValueListItem(cat, '"%s"' % cat)  # IronPython compatible formatting
+                    item = GH_ValueListItem(cat, '"%s"' % cat)
                     vl.ListItems.Add(item)
-                
-                # Position value list to the left of the component
                 vl.Attributes.Pivot = PointF(
                     self.Params.Input[1].Attributes.Pivot.X - 250,
                     self.Params.Input[1].Attributes.Pivot.Y
                 )
-                
-                # Add to document and connect
                 ghdoc = self.OnPingDocument()
                 ghdoc.AddObject(vl, False)
                 self.Params.Input[1].AddSource(vl)
                 self.Params.OnParametersChanged()
                 ghdoc.ScheduleSolution(5, GH_Document.GH_ScheduleDelegate(self.ExpireSolution))
-                
             except Exception as e:
                 self.AddRuntimeMessage(RML.Error, "Value list creation failed: {0}".format(str(e)))
 
@@ -129,7 +128,6 @@ class InfrasetElement(component):
         if element_category and element_db.element_db:
             element_data = element_db.element_db.get(str(element_category), {})
             if element_data:
-                # Handle input defaults
                 No = No or 1
                 wastage = (wastage_coefficient or 0) / 100.0
                 material_service_life = material_service_life or 60
@@ -161,18 +159,18 @@ class InfrasetElement(component):
                     # Maintenance calculations
                     maintenance_embodied_energy = element_data.get("Maintenance_Embodied_Energy_(MJ)", 0) * No * (material_service_life / 60)
                     maintenance_embodied_ghg = element_data.get("Maintenance_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
-                    maintenance_embodied_water = element_data.get("Maintenance_Embodied_Water_(L)", 0) * No *(material_service_life / 60)
-                    maintenance_mass = element_data.get("Maintenance_Mass_(kg)", 0) * No * 0.001 *(material_service_life / 60)
+                    maintenance_embodied_water = element_data.get("Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
+                    maintenance_mass = element_data.get("Maintenance_Mass_(kg)", 0) * No * 0.001 * (material_service_life / 60)
                     
                     # Embodied calculations GHG for material categories
-                    Concrete_plaster_products_Initial_Embodied_GHG = element_data.get("Concrete and plaster products_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Plastics_Initial_Embodied_GHG = element_data.get("Plastics_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Metals_Initial_Embodied_GHG = element_data.get("Metals_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Miscellaneous_Initial_Embodied_GHG = element_data.get("Miscellaneous_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Sand_stone_ceramics_Initial_Embodied_GHG = element_data.get("Sand, stone and ceramics_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Glass_Initial_Embodied_GHG = element_data.get("Glass_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Timber_Initial_Embodied_GHG = element_data.get("Timber_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
-                    Insulation_Initial_Embodied_GHG = element_data.get("Insulation_Initial_Embodied_GHG_(kgCO2e)", 0) * No 
+                    Concrete_plaster_products_Initial_Embodied_GHG = element_data.get("Concrete and plaster products_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Plastics_Initial_Embodied_GHG = element_data.get("Plastics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Metals_Initial_Embodied_GHG = element_data.get("Metals_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Miscellaneous_Initial_Embodied_GHG = element_data.get("Miscellaneous_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Sand_stone_ceramics_Initial_Embodied_GHG = element_data.get("Sand, stone and ceramics_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Glass_Initial_Embodied_GHG = element_data.get("Glass_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Timber_Initial_Embodied_GHG = element_data.get("Timber_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
+                    Insulation_Initial_Embodied_GHG = element_data.get("Insulation_Initial_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
                     
                     # Maintenance Embodied GHG calculations for material categories
                     Concrete_plaster_products_Maintenance_Embodied_GHG = element_data.get("Concrete and plaster products_Maintenance_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
@@ -185,14 +183,14 @@ class InfrasetElement(component):
                     Insulation_Maintenance_Embodied_GHG = element_data.get("Insulation_Maintenance_Embodied_GHG_(kgCO2e)", 0) * No * (material_service_life / 60)
                     
                     # Embodied calculations Energy for material categories
-                    Concrete_plaster_products_Initial_Embodied_energy = element_data.get("Concrete and plaster products_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Plastics_Initial_Embodied_energy = element_data.get("Plastics_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Metals_Initial_Embodied_energy = element_data.get("Metals_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Miscellaneous_Initial_Embodied_energy = element_data.get("Miscellaneous_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Sand_stone_ceramics_Initial_Embodied_energy = element_data.get("Sand, stone and ceramics_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Glass_Initial_Embodied_energy = element_data.get("Glass_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Timber_Initial_Embodied_energy = element_data.get("Timber_Initial_Embodied_energy_(MJ)", 0) * No 
-                    Insulation_Initial_Embodied_energy = element_data.get("Insulation_Initial_Embodied_energy_(MJ)", 0) * No 
+                    Concrete_plaster_products_Initial_Embodied_energy = element_data.get("Concrete and plaster products_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Plastics_Initial_Embodied_energy = element_data.get("Plastics_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Metals_Initial_Embodied_energy = element_data.get("Metals_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Miscellaneous_Initial_Embodied_energy = element_data.get("Miscellaneous_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Sand_stone_ceramics_Initial_Embodied_energy = element_data.get("Sand, stone and ceramics_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Glass_Initial_Embodied_energy = element_data.get("Glass_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Timber_Initial_Embodied_energy = element_data.get("Timber_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
+                    Insulation_Initial_Embodied_energy = element_data.get("Insulation_Initial_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
                     
                     # Maintenance Embodied Energy calculations for material categories
                     Concrete_plaster_products_Maintenance_Embodied_energy = element_data.get("Concrete and plaster products_Maintenance_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
@@ -205,17 +203,20 @@ class InfrasetElement(component):
                     Insulation_Maintenance_Embodied_energy = element_data.get("Insulation_Maintenance_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
                     
                     # Embodied calculations water for material categories
-                    Concrete_plaster_products_Initial_Embodied_water = element_data.get("Concrete and plaster products_Initial_embodied_water_(L)", 0) * No 
-                    Plastics_Initial_Embodied_water = element_data.get("Plastics_Initial_Embodied_water_(L)", 0) * No 
-                    Metals_Initial_Embodied_water = element_data.get("Metals_Initial_Embodied_water_(L)", 0) * No 
-                    Miscellaneous_Initial_Embodied_water = element_data.get("Miscellaneous_Initial_Embodied_water_(L)", 0) * No 
-                    Sand_stone_ceramics_Initial_Embodied_water = element_data.get("Sand, stone and ceramics_Initial_Embodied_water_(L)", 0) * No 
-                    Glass_Initial_Embodied_water = element_data.get("Glass_Initial_Embodied_water_(L)", 0) * No 
-                    Timber_Initial_Embodied_water = element_data.get("Timber_Initial_Embodied_water_(L)", 0) * No 
-                    Insulation_Initial_Embodied_water = element_data.get("Insulation_Initial_Embodied_water_(L)", 0) * No 
+                    Concrete_plaster_products_Initial_Embodied_water = element_data.get("Concrete and plaster products_Initial_embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Plastics_Initial_Embodied_water = element_data.get("Plastics_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Metals_Initial_Embodied_water = element_data.get("Metals_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Miscellaneous_Initial_Embodied_water = element_data.get("Miscellaneous_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Sand_stone_ceramics_Initial_Embodied_water = element_data.get("Sand, stone and ceramics_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    # ✅ FIX #1: Changed from _energy_(MJ) to _water_(L)
+                    Glass_Initial_Embodied_water = element_data.get("Glass_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Timber_Initial_Embodied_water = element_data.get("Timber_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
+                    Insulation_Initial_Embodied_water = element_data.get("Insulation_Initial_Embodied_water_(L)", 0) * No * (material_service_life / 60)
                     
                     # Maintenance Embodied water calculations for material categories
+                    # ✅ FIX #2: Separated water and energy, reading correct keys
                     Concrete_plaster_products_Maintenance_Embodied_water = element_data.get("Concrete and plaster products_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
+                    Concrete_plaster_products_Maintenance_Embodied_energy = element_data.get("Concrete and plaster products_Maintenance_Embodied_energy_(MJ)", 0) * No * (material_service_life / 60)
                     Plastics_Maintenance_Embodied_water = element_data.get("Plastics_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
                     Metals_Maintenance_Embodied_water = element_data.get("Metals_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
                     Miscellaneous_Maintenance_Embodied_water = element_data.get("Miscellaneous_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
@@ -223,7 +224,6 @@ class InfrasetElement(component):
                     Glass_Maintenance_Embodied_water = element_data.get("Glass_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
                     Timber_Maintenance_Embodied_water = element_data.get("Timber_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
                     Insulation_Maintenance_Embodied_water = element_data.get("Insulation_Maintenance_Embodied_Water_(L)", 0) * No * (material_service_life / 60)
-
 
                 except KeyError as e:
                     self.AddRuntimeMessage(RML.Warning, "Missing data key: {0}".format(str(e)))
@@ -273,9 +273,9 @@ class InfrasetElement(component):
                             maintenance_embodied_water += value
                         elif key == 'maintenance_mass':
                             maintenance_mass += value
-                        ## Maintenance Embodied water calculations for material categories
+                        # Maintenance Embodied water calculations for material categories
                         elif key == 'Insulation_Maintenance_Embodied_water':
-                           Insulation_Maintenance_Embodied_water += value
+                            Insulation_Maintenance_Embodied_water += value
                         elif key == 'Timber_Maintenance_Embodied_water':
                             Timber_Maintenance_Embodied_water += value
                         elif key == 'Glass_Maintenance_Embodied_water':
@@ -288,7 +288,7 @@ class InfrasetElement(component):
                             Metals_Maintenance_Embodied_water += value
                         elif key == 'Plastics_Maintenance_Embodied_water':
                             Plastics_Maintenance_Embodied_water += value
-                        # FIX #2: Changed key from _energy to _water
+                        # ✅ FIX #4: Changed from _energy to _water
                         elif key == 'Concrete_plaster_products_Maintenance_Embodied_water':
                             Concrete_plaster_products_Maintenance_Embodied_water += value
                         # Embodied calculations water for material categories
@@ -308,7 +308,7 @@ class InfrasetElement(component):
                             Plastics_Initial_Embodied_water += value
                         elif key == 'Concrete_plaster_products_Initial_Embodied_water':
                             Concrete_plaster_products_Initial_Embodied_water += value
-                       # Maintenance Embodied Energy calculations for material categories
+                        # Maintenance Embodied Energy calculations for material categories
                         elif key == 'Concrete_plaster_products_Maintenance_Embodied_energy':
                             Concrete_plaster_products_Maintenance_Embodied_energy += value
                         elif key == 'Plastics_Maintenance_Embodied_energy':
@@ -325,7 +325,7 @@ class InfrasetElement(component):
                             Timber_Maintenance_Embodied_energy += value
                         elif key == 'Insulation_Maintenance_Embodied_energy':
                             Insulation_Maintenance_Embodied_energy += value
-                       # Embodied calculations Energy for material categories
+                        # Embodied calculations Energy for material categories
                         elif key == 'Concrete_plaster_products_Initial_Embodied_energy':
                             Concrete_plaster_products_Initial_Embodied_energy += value
                         elif key == 'Plastics_Initial_Embodied_energy':
@@ -342,7 +342,7 @@ class InfrasetElement(component):
                             Timber_Initial_Embodied_energy += value
                         elif key == 'Insulation_Initial_Embodied_energy':
                             Insulation_Initial_Embodied_energy += value
-                       # Maintenance Embodied GHG calculations for material categories
+                        # Maintenance Embodied GHG calculations for material categories
                         elif key == 'Concrete_plaster_products_Maintenance_Embodied_GHG':
                             Concrete_plaster_products_Maintenance_Embodied_GHG += value
                         elif key == 'Plastics_Maintenance_Embodied_GHG':
@@ -359,7 +359,7 @@ class InfrasetElement(component):
                             Timber_Maintenance_Embodied_GHG += value
                         elif key == 'Insulation_Maintenance_Embodied_GHG':
                             Insulation_Maintenance_Embodied_GHG += value
-                       # Embodied calculations GHG for material categories
+                        # Embodied calculations GHG for material categories
                         elif key == 'Concrete_plaster_products_Initial_Embodied_GHG':
                             Concrete_plaster_products_Initial_Embodied_GHG += value
                         elif key == 'Plastics_Initial_Embodied_GHG':
@@ -401,7 +401,7 @@ class InfrasetElement(component):
             ('Miscellaneous', miscellaneous_mass),
             ('Sand, stone and ceramics', sand_stone_ceramics_mass),
             ('Timber', timber_mass),
-            ## Maintenance Embodied water calculations for material categories
+            # Maintenance Embodied water calculations for material categories
             ('Insulation_Maintenance_Embodied_water', Insulation_Maintenance_Embodied_water),
             ('Timber_Maintenance_Embodied_water', Timber_Maintenance_Embodied_water),
             ('Glass_Maintenance_Embodied_water', Glass_Maintenance_Embodied_water),
@@ -409,7 +409,7 @@ class InfrasetElement(component):
             ('Miscellaneous_Maintenance_Embodied_water', Miscellaneous_Maintenance_Embodied_water),
             ('Metals_Maintenance_Embodied_water', Metals_Maintenance_Embodied_water),
             ('Plastics_Maintenance_Embodied_water', Plastics_Maintenance_Embodied_water),
-            # FIX #1: Added missing Concrete_plaster_products_Maintenance_Embodied_water
+            # ✅ FIX #3: Added the missing line
             ('Concrete_plaster_products_Maintenance_Embodied_water', Concrete_plaster_products_Maintenance_Embodied_water),
             # Embodied calculations water for material categories
             ('Insulation_Initial_Embodied_water', Insulation_Initial_Embodied_water),
@@ -422,40 +422,40 @@ class InfrasetElement(component):
             ('Concrete_plaster_products_Initial_Embodied_water', Concrete_plaster_products_Initial_Embodied_water),
             # Maintenance Embodied Energy calculations for material categories
             ('Concrete_plaster_products_Maintenance_Embodied_energy', Concrete_plaster_products_Maintenance_Embodied_energy),
-    ('Plastics_Maintenance_Embodied_energy', Plastics_Maintenance_Embodied_energy),
-    ('Metals_Maintenance_Embodied_energy', Metals_Maintenance_Embodied_energy),
-    ('Miscellaneous_Maintenance_Embodied_energy', Miscellaneous_Maintenance_Embodied_energy),
-    ('Sand_stone_ceramics_Maintenance_Embodied_energy', Sand_stone_ceramics_Maintenance_Embodied_energy),
-    ('Glass_Maintenance_Embodied_energy', Glass_Maintenance_Embodied_energy),
-    ('Timber_Maintenance_Embodied_energy', Timber_Maintenance_Embodied_energy),
-    ('Insulation_Maintenance_Embodied_energy', Insulation_Maintenance_Embodied_energy),
-                       # Embodied calculations Energy for material categories
-                       ('Concrete_plaster_products_Initial_Embodied_energy', Concrete_plaster_products_Initial_Embodied_energy),
-    ('Plastics_Initial_Embodied_energy', Plastics_Initial_Embodied_energy),
-    ('Metals_Initial_Embodied_energy', Metals_Initial_Embodied_energy),
-    ('Miscellaneous_Initial_Embodied_energy', Miscellaneous_Initial_Embodied_energy),
-    ('Sand_stone_ceramics_Initial_Embodied_energy', Sand_stone_ceramics_Initial_Embodied_energy),
-    ('Glass_Initial_Embodied_energy', Glass_Initial_Embodied_energy),
-    ('Timber_Initial_Embodied_energy', Timber_Initial_Embodied_energy),
-    ('Insulation_Initial_Embodied_energy', Insulation_Initial_Embodied_energy),
-                       # Maintenance Embodied GHG calculations for material categories
-                       ('Concrete_plaster_products_Maintenance_Embodied_GHG', Concrete_plaster_products_Maintenance_Embodied_GHG),
-    ('Plastics_Maintenance_Embodied_GHG', Plastics_Maintenance_Embodied_GHG),
-    ('Metals_Maintenance_Embodied_GHG', Metals_Maintenance_Embodied_GHG),
-    ('Miscellaneous_Maintenance_Embodied_GHG', Miscellaneous_Maintenance_Embodied_GHG),
-    ('Sand_stone_ceramics_Maintenance_Embodied_GHG', Sand_stone_ceramics_Maintenance_Embodied_GHG),
-    ('Glass_Maintenance_Embodied_GHG', Glass_Maintenance_Embodied_GHG),
-    ('Timber_Maintenance_Embodied_GHG', Timber_Maintenance_Embodied_GHG),
-    ('Insulation_Maintenance_Embodied_GHG', Insulation_Maintenance_Embodied_GHG),
-                       # Embodied calculations GHG for material categories
-                       ('Concrete_plaster_products_Initial_Embodied_GHG', Concrete_plaster_products_Initial_Embodied_GHG),
-    ('Plastics_Initial_Embodied_GHG', Plastics_Initial_Embodied_GHG),
-    ('Metals_Initial_Embodied_GHG', Metals_Initial_Embodied_GHG),
-    ('Miscellaneous_Initial_Embodied_GHG', Miscellaneous_Initial_Embodied_GHG),
-    ('Sand_stone_ceramics_Initial_Embodied_GHG', Sand_stone_ceramics_Initial_Embodied_GHG),
-    ('Glass_Initial_Embodied_GHG', Glass_Initial_Embodied_GHG),
-    ('Timber_Initial_Embodied_GHG', Timber_Initial_Embodied_GHG),
-    ('Insulation_Initial_Embodied_GHG', Insulation_Initial_Embodied_GHG),
+            ('Plastics_Maintenance_Embodied_energy', Plastics_Maintenance_Embodied_energy),
+            ('Metals_Maintenance_Embodied_energy', Metals_Maintenance_Embodied_energy),
+            ('Miscellaneous_Maintenance_Embodied_energy', Miscellaneous_Maintenance_Embodied_energy),
+            ('Sand_stone_ceramics_Maintenance_Embodied_energy', Sand_stone_ceramics_Maintenance_Embodied_energy),
+            ('Glass_Maintenance_Embodied_energy', Glass_Maintenance_Embodied_energy),
+            ('Timber_Maintenance_Embodied_energy', Timber_Maintenance_Embodied_energy),
+            ('Insulation_Maintenance_Embodied_energy', Insulation_Maintenance_Embodied_energy),
+            # Embodied calculations Energy for material categories
+            ('Concrete_plaster_products_Initial_Embodied_energy', Concrete_plaster_products_Initial_Embodied_energy),
+            ('Plastics_Initial_Embodied_energy', Plastics_Initial_Embodied_energy),
+            ('Metals_Initial_Embodied_energy', Metals_Initial_Embodied_energy),
+            ('Miscellaneous_Initial_Embodied_energy', Miscellaneous_Initial_Embodied_energy),
+            ('Sand_stone_ceramics_Initial_Embodied_energy', Sand_stone_ceramics_Initial_Embodied_energy),
+            ('Glass_Initial_Embodied_energy', Glass_Initial_Embodied_energy),
+            ('Timber_Initial_Embodied_energy', Timber_Initial_Embodied_energy),
+            ('Insulation_Initial_Embodied_energy', Insulation_Initial_Embodied_energy),
+            # Maintenance Embodied GHG calculations for material categories
+            ('Concrete_plaster_products_Maintenance_Embodied_GHG', Concrete_plaster_products_Maintenance_Embodied_GHG),
+            ('Plastics_Maintenance_Embodied_GHG', Plastics_Maintenance_Embodied_GHG),
+            ('Metals_Maintenance_Embodied_GHG', Metals_Maintenance_Embodied_GHG),
+            ('Miscellaneous_Maintenance_Embodied_GHG', Miscellaneous_Maintenance_Embodied_GHG),
+            ('Sand_stone_ceramics_Maintenance_Embodied_GHG', Sand_stone_ceramics_Maintenance_Embodied_GHG),
+            ('Glass_Maintenance_Embodied_GHG', Glass_Maintenance_Embodied_GHG),
+            ('Timber_Maintenance_Embodied_GHG', Timber_Maintenance_Embodied_GHG),
+            ('Insulation_Maintenance_Embodied_GHG', Insulation_Maintenance_Embodied_GHG),
+            # Embodied calculations GHG for material categories
+            ('Concrete_plaster_products_Initial_Embodied_GHG', Concrete_plaster_products_Initial_Embodied_GHG),
+            ('Plastics_Initial_Embodied_GHG', Plastics_Initial_Embodied_GHG),
+            ('Metals_Initial_Embodied_GHG', Metals_Initial_Embodied_GHG),
+            ('Miscellaneous_Initial_Embodied_GHG', Miscellaneous_Initial_Embodied_GHG),
+            ('Sand_stone_ceramics_Initial_Embodied_GHG', Sand_stone_ceramics_Initial_Embodied_GHG),
+            ('Glass_Initial_Embodied_GHG', Glass_Initial_Embodied_GHG),
+            ('Timber_Initial_Embodied_GHG', Timber_Initial_Embodied_GHG),
+            ('Insulation_Initial_Embodied_GHG', Insulation_Initial_Embodied_GHG),
         ], path)
 
         return (
