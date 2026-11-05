@@ -2071,7 +2071,7 @@ class AssemblyDatabase:
                                 "Embodied_GHG_Coefficient_pavement": 0.336 * 0.7,
                 "Embodied_Energy_Coefficient_pavement": 3.64 * 0.7,
                 "Embodied_Water_Coefficient_pavement": 5.18 * 0.7,
-                "replacement_factor_pavement": 0.0,
+                "replacement_factor_pavement": 1,
                 "PKT_million_60_years": 192
             },
             "Drainage_Trench_RCP": {
